@@ -1,7 +1,7 @@
-ee62d4e9c5d90b2c547404591b81d84e *DESCRIPTION
+d2ad53cd2af362e4088d0d5024807bb2 *DESCRIPTION
 25de9fc2234a3572f07e1dfac277f813 *LICENSE
 f0834f8f70df0ad5833de99096f92c1a *NAMESPACE
-2d69c0d6af9d7abec945f48181139435 *NEWS.md
+56a7e3796ec6be697adc5348a730fe5d *NEWS.md
 0303db413eb66c5d0478a2b1db1fe53d *R/CCplot.R
 90eb03efe51aee531932fa7d257c3c4e *R/HKnorm.R
 7974399f0584b0c3120ed377ec2b1cd2 *R/NanoStringQC.R
@@ -18,9 +18,10 @@ a7a3f166f9f02d6a336d26c9afe43faf *data/hlo.r.rda
 ac61a8ee86c89c270730e6b3cf7e8dbf *data/ovc.r.rda
 d77aff9724f7d45702fab56690eae3a0 *data/ovd.r.rda
 92eb1a77612d9887b02c6ee6bba4daad *data/ovo.r.rda
+48935f77c175f61a6768d3ae966de46e *inst/CITATION
 fae5cb9e90253cfda3201ebe12a20516 *inst/doc/Overview.R
 5ed441427d9e678bf2a05d5544fca018 *inst/doc/Overview.Rmd
-43618f28b7573dd98fcf80691ea6dc6b *inst/doc/Overview.html
+37d565812b823922d0d05943ecfd221f *inst/doc/Overview.html
 b605b11cbae5946632ad1445de96c0e4 *inst/extdata/example.RCC
 68715172e85be9fc9e33a726b6114f10 *man/CCplot.Rd
 7bdc9ad439c6c903eafe82d6f8cc8d09 *man/HKnorm.Rd

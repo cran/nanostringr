@@ -2,8 +2,8 @@ Type: Package
 Package: nanostringr
 Title: Performs Quality Control, Data Normalization, and Batch Effect
         Correction for 'NanoString nCounter' Data
-Version: 0.1.0
-Date: 2019-03-13
+Version: 0.1.1
+Date: 2019-03-25
 Authors@R: 
     c(person(given = "Derek",
              family = "Chiu",
@@ -39,10 +39,10 @@ Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-03-14 22:44:48 UTC; dchiu
+Packaged: 2019-03-25 22:26:09 UTC; dchiu
 Author: Derek Chiu [aut, cre],
   Aline Talhouk [aut],
   Samuel Leung [aut]
 Maintainer: Derek Chiu <dchiu@bccrc.ca>
 Repository: CRAN
-Date/Publication: 2019-03-15 14:50:02 UTC
+Date/Publication: 2019-03-25 22:50:03 UTC
