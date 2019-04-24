@@ -1,11 +1,11 @@
-95c1096c9c48f3cf7681586f9519cd58 *DESCRIPTION
+3a11f86361839a90a12d531bb4cd5fad *DESCRIPTION
 25de9fc2234a3572f07e1dfac277f813 *LICENSE
 f0834f8f70df0ad5833de99096f92c1a *NAMESPACE
-7fa761f7b171cd923274d96d906d31bb *NEWS.md
-0303db413eb66c5d0478a2b1db1fe53d *R/CCplot.R
+b503dafecbe609bc812e15c01d1e337a *NEWS.md
+88447baa561886633b5f8d62b225addb *R/CCplot.R
 2ae80a5604f5e5926794b09fbab79a4b *R/HKnorm.R
-ab4f99f24d845fe3511378fab96dbf04 *R/NanoStringQC.R
-1659b8640b7c9f0ee3f1cea5ba63f481 *R/check.R
+31a2bb52af0c5c1f756ea93da01178b4 *R/NanoStringQC.R
+e75df740a9e54ff39526499147366e6e *R/check.R
 0508c0dd7ca3a4bd6d4f86c0f04372d8 *R/data.R
 a1664a0b2ebb69028c42bb84e1c9bf46 *R/nanostringr-package.R
 64e3aa5e290a5fbc01b0ea2ac78ad51b *R/read_rcc.R
@@ -21,7 +21,7 @@ ac61a8ee86c89c270730e6b3cf7e8dbf *data/ovc.r.rda
 48935f77c175f61a6768d3ae966de46e *inst/CITATION
 fae5cb9e90253cfda3201ebe12a20516 *inst/doc/Overview.R
 5ed441427d9e678bf2a05d5544fca018 *inst/doc/Overview.Rmd
-33f99c719558a568a70f95b544e7cbb2 *inst/doc/Overview.html
+524b98b9361b29fc5c280cfd6157178c *inst/doc/Overview.html
 b605b11cbae5946632ad1445de96c0e4 *inst/extdata/example.RCC
 68715172e85be9fc9e33a726b6114f10 *man/CCplot.Rd
 7bdc9ad439c6c903eafe82d6f8cc8d09 *man/HKnorm.Rd
@@ -34,8 +34,8 @@ d0a171aba8c3db5d8157002815cdd34c *man/refMethod.Rd
 729d48179bbd7e038cbcb1545f7fde7d *tests/testthat.R
 c0072914d506f909e29b3315a847d3e3 *tests/testthat/test-CCplot.R
 f9ab6b058b49956feed6a66896cbaac8 *tests/testthat/test-HKnorm.R
-2b181adf0ad140f6908bd060b67c1857 *tests/testthat/test-NanoStringQC.R
+54d59b07311d4e9c86c807adf08423fb *tests/testthat/test-NanoStringQC.R
 91c007d6c0ac1e08e1ee2f02b472de26 *tests/testthat/test-order.R
-53ac4aad5d961fcd35cb2faa8aba81dc *tests/testthat/test-parse.R
+6bb2793652a2b0ff880269d1cf34cfb0 *tests/testthat/test-parse.R
 62f45d76ebaf5a8207c51914d584e36b *tests/testthat/test-ratioMethod.R
 5ed441427d9e678bf2a05d5544fca018 *vignettes/Overview.Rmd
