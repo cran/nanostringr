@@ -9,16 +9,14 @@ vignette: >
   %\usepackage[utf8]{inputenc}
 ---
 
-```{r setupQualityMeasures, message = FALSE, echo = FALSE, warning = FALSE}
-library(knitr)
-library(dplyr)
+```{r setupQualityMeasures, message=FALSE, echo=FALSE, warning=FALSE}
 knitr::opts_chunk$set(
-	echo = TRUE,
-	fig.height = 6,
-	fig.width = 7,
-	message = FALSE,
-	warning = FALSE,
-	results = "asis"
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.height = 6,
+  fig.width = 7,
+  results = "asis"
 )
 # Define colors constants----
 COL.OVD <- "#66C2A5"
@@ -40,27 +38,27 @@ This vignette provides a guide to reproduce the analyses in the paper and docume
 # The Data
 Included in this package are several datasets that are described in detail in the manuscript and that are annotated in expQC, the annotation data frame for all of the experiments, run in different CodeSets, including:
 
-- **Hodgkin Lymphoma Clinical Samples (HL)** 	TOTAL 	74 samples	
-    - HL1	n=32	Unique Samples
-    - HL2	n=32	Replicates of HL1 samples
-    - HL3	n=10	Replicates (subset of HL1 samples)
+- **Hodgkin Lymphoma Clinical Samples (HL)**  TOTAL 74 samples	
+    - HL1 n=32 Unique Samples
+    - HL2 n=32 Replicates of HL1 samples
+    - HL3 n=10 Replicates (subset of HL1 samples)
 
-- **Ovarian Cancer Clinical Samples (OC)**		TOTAL	258	samples
-    - OC1	n=129	Unique
-    - OC2	n=129	Replicates of OC1 samples
+- **Ovarian Cancer Clinical Samples (OC)**  TOTAL 258 samples
+    - OC1 n=129 Unique
+    - OC2 n=129 Replicates of OC1 samples
 	    
-- **Ovarian Cancer Cell Lines (OVCL)**	TOTAL	26 
-    - OC1	n=13	Unique
-    - OC2	n=13	Replicates of OC1 samples
+- **Ovarian Cancer Cell Lines (OVCL)**  TOTAL 26 samples
+    - OC1 n=13 Unique
+    - OC2 n=13 Replicates of OC1 samples
 	
-- **DNA Oligonucleotides for the HL CodeSet (HLO)**	TOTAL	68 HLO pool run at different concentrations
-    - HL1	n=36	
-    - HL2	n=30	
-    - HL3	n=2	
+- **DNA Oligonucleotides for the HL CodeSet (HLO)** TOTAL 68 HLO pool run at different concentrations
+    - HL1 n=36	
+    - HL2 n=30	
+    - HL3 n=2	
     
-- **DNA Oligonucleotides for the OC CodeSet (OVO)**		TOTAL	135	OVO pool run at different concentrations
-    - OC1	n=47	
-	  - OC2	n=88	
+- **DNA Oligonucleotides for the OC CodeSet (OVO)** TOTAL 135 OVO pool run at different concentrations
+    - OC1 n=47	
+    - OC2 n=88	
 
 # The Functions
 
@@ -76,14 +74,17 @@ expOVCL <- NanoStringQC(ovc.r, subset(expQC, OVCL == "Yes"))
 expHLD <- NanoStringQC(hld.r, subset(expQC, HLD == "Yes"))
 expHLO <- NanoStringQC(hlo.r, subset(expQC, HLO == "Yes"))
 expQC <- rbind(expHLD, expOVD, expHLO, expOVO, expOVCL)
-expQC$cohort <- factor(c(rep("HLD", nrow(expHLD)), 
-                rep("OVD", nrow(expOVD)), rep("HLO", nrow(expHLO)),
-                rep("OVO", nrow(expOVO)), rep("OVCL", nrow(expOVCL))))
-expQC <- expQC %>% 
-  mutate(cohort = factor(stringr::str_replace_all(cohort,
-                                                  c("HLD" = "HL",
-                                                    "OVD" = "OC")),
-                         levels = c("HL", "OC", "OVCL", "HLO", "OVO")))
+expQC$cohort <- factor(
+  x = c(
+    rep("HLD", nrow(expHLD)),
+    rep("OVD", nrow(expOVD)),
+    rep("HLO", nrow(expHLO)),
+    rep("OVO", nrow(expOVO)),
+    rep("OVCL", nrow(expOVCL))
+  ),
+  levels = c("HLD", "OVD", "OVCL", "HLO", "OVO"),
+  labels = c("HL", "OC", "OVCL", "HLO", "OVO")
+)
 ```
 
 ### Metrics for Quality Assurance
@@ -193,7 +194,7 @@ expHLD0$sampleID[which(expHLD0$QCFlag == "Failed")]
 Since these are matched samples we must remove both pairs from the annotation data frame and from the gene expression data frame.
 
 ```{r remove_samples}
-expHLD <- filter(expHLD0, sampleID != "HL1_18" & sampleID != "HL2_18")
+expHLD <- dplyr::filter(expHLD0, sampleID != "HL1_18" & sampleID != "HL2_18")
 hld <- hld.r[, !colnames(hld.r) %in% c("HL1_18", "HL2_18")]
 ```
 

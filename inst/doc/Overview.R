@@ -1,13 +1,11 @@
-## ----setupQualityMeasures, message = FALSE, echo = FALSE, warning = FALSE----
-library(knitr)
-library(dplyr)
+## ----setupQualityMeasures, message=FALSE, echo=FALSE, warning=FALSE------
 knitr::opts_chunk$set(
-	echo = TRUE,
-	fig.height = 6,
-	fig.width = 7,
-	message = FALSE,
-	warning = FALSE,
-	results = "asis"
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.height = 6,
+  fig.width = 7,
+  results = "asis"
 )
 # Define colors constants----
 COL.OVD <- "#66C2A5"
@@ -27,14 +25,17 @@ expOVCL <- NanoStringQC(ovc.r, subset(expQC, OVCL == "Yes"))
 expHLD <- NanoStringQC(hld.r, subset(expQC, HLD == "Yes"))
 expHLO <- NanoStringQC(hlo.r, subset(expQC, HLO == "Yes"))
 expQC <- rbind(expHLD, expOVD, expHLO, expOVO, expOVCL)
-expQC$cohort <- factor(c(rep("HLD", nrow(expHLD)), 
-                rep("OVD", nrow(expOVD)), rep("HLO", nrow(expHLO)),
-                rep("OVO", nrow(expOVO)), rep("OVCL", nrow(expOVCL))))
-expQC <- expQC %>% 
-  mutate(cohort = factor(stringr::str_replace_all(cohort,
-                                                  c("HLD" = "HL",
-                                                    "OVD" = "OC")),
-                         levels = c("HL", "OC", "OVCL", "HLO", "OVO")))
+expQC$cohort <- factor(
+  x = c(
+    rep("HLD", nrow(expHLD)),
+    rep("OVD", nrow(expOVD)),
+    rep("HLO", nrow(expHLO)),
+    rep("OVO", nrow(expOVO)),
+    rep("OVCL", nrow(expOVCL))
+  ),
+  levels = c("HLD", "OVD", "OVCL", "HLO", "OVO"),
+  labels = c("HL", "OC", "OVCL", "HLO", "OVO")
+)
 
 ## ----perFOVPlot, fig.cap="Samples that failed imaging QC based on percent fields of view (FOV) counted across cohorts."----
 boxplot(perFOV ~ cohort, ylab = "% FOV", main = "% FOV by Cohort", data = expQC, pch = 20,
@@ -111,7 +112,7 @@ any(expHLD0$QCFlag == "Failed")
 expHLD0$sampleID[which(expHLD0$QCFlag == "Failed")]
 
 ## ----remove_samples------------------------------------------------------
-expHLD <- filter(expHLD0, sampleID != "HL1_18" & sampleID != "HL2_18")
+expHLD <- dplyr::filter(expHLD0, sampleID != "HL1_18" & sampleID != "HL2_18")
 hld <- hld.r[, !colnames(hld.r) %in% c("HL1_18", "HL2_18")]
 
 ## ----normalize_HK--------------------------------------------------------
