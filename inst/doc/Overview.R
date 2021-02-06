@@ -1,4 +1,4 @@
-## ----setupQualityMeasures, message=FALSE, echo=FALSE, warning=FALSE------
+## ----setupQualityMeasures, message=FALSE, echo=FALSE, warning=FALSE-----------
 knitr::opts_chunk$set(
   echo = TRUE,
   message = FALSE,
@@ -17,7 +17,7 @@ getNum <- function(str.vect) {
   sapply(strsplit(str.vect, "[_]"), "[[", 2)
 }
 
-## ----NanoStringQC, message=TRUE, echo=TRUE-------------------------------
+## ----NanoStringQC, message=TRUE, echo=TRUE------------------------------------
 library(nanostringr)
 expOVD <- NanoStringQC(ovd.r, subset(expQC, OVD == "Yes"))
 expOVO <- NanoStringQC(ovo.r, subset(expQC, OVO == "Yes"))
@@ -56,7 +56,7 @@ boxplot(averageHK ~ cohort, ylab = "Average log HK expression",
 abline(h = 50, lty = 2, col = "red")
 grid(NULL, NULL, lwd = 1)
 
-## ----lodPlot, fig.cap="Limit of detection by cohort."--------------------
+## ----lodPlot, fig.cap="Limit of detection by cohort."-------------------------
 boxplot(lod ~ cohort, ylab = "LOD", main = "Limit of detection (LOD) by Cohort",
         data = expQC, pch = 20, col = c(COL.HLD, COL.OVD, COL.OVCL, COL.HLO, COL.OVO))
 abline(h = 50, lty = 2, col = "red")
@@ -74,7 +74,7 @@ stripchart(pergd ~ cohort, data = expQC,
            pch = 20, cex = 0.4 , col = "#3A6EE3", 
            add = TRUE) 
 
-## ----snPlot, fig.cap="Signal to Noise versus % Gene Detected by cohort."----
+## ----snPlot, fig.cap="Signal to Noise versus % Gene Detected by cohort."------
 sn <- 100
 detect <- 60
 
@@ -106,16 +106,16 @@ title("Signal to Noise vs \n Ratio of Genes Detected (Zooming-in)")
 legend("bottomright", c("HL", "OC", "OVCL", "HLO", "OVO"), pch = 20, bty = 'n',
        col = c(COL.HLD, COL.OVD, COL.OVCL, COL.HLO, COL.OVO))
 
-## ----HKnorm--------------------------------------------------------------
+## ----HKnorm-------------------------------------------------------------------
 expHLD0 <- expHLD
 any(expHLD0$QCFlag == "Failed")
 expHLD0$sampleID[which(expHLD0$QCFlag == "Failed")]
 
-## ----remove_samples------------------------------------------------------
+## ----remove_samples-----------------------------------------------------------
 expHLD <- dplyr::filter(expHLD0, sampleID != "HL1_18" & sampleID != "HL2_18")
 hld <- hld.r[, !colnames(hld.r) %in% c("HL1_18", "HL2_18")]
 
-## ----normalize_HK--------------------------------------------------------
+## ----normalize_HK-------------------------------------------------------------
 # If data already log normalized
 hld.n <- HKnorm(hld, is.logged = TRUE)
 
@@ -127,7 +127,7 @@ exp.hld1 <- subset(expHLD, geneRLF == "HL1")
 hld2 <- hld.n[, grep("HL2", colnames(hld.n))]
 exp.hld2 <- subset(expHLD, geneRLF == "HL2")
 
-## ----refMethod-----------------------------------------------------------
+## ----refMethod----------------------------------------------------------------
 r <- 3 # The number of references to use
 choice.refs <- exp.hld1$sampleID[sample((1:dim(exp.hld1)[1]), r, replace = F)] # select reference samples randomly
 R1 <- t(hld1[, choice.refs])
@@ -135,7 +135,7 @@ R2 <- t(hld2[, paste("HL2", getNum(choice.refs), sep = "_")])
 Y <- t(hld2[, !colnames(hld2) %in% paste("HL2", getNum(choice.refs), sep = "_")])
 S2.r <- t(refMethod(Y, R1, R2)) # Data from CodeSet 2 now calibrated for CodeSet 1
 
-## ----plot_gene-----------------------------------------------------------
+## ----plot_gene----------------------------------------------------------------
 set.seed(2016)
 gene <- sample(1:nrow(hld1), 1)
 par(mfrow = c(1, 2))
