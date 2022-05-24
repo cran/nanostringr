@@ -30,9 +30,9 @@ NanoStringQC <- function(raw, exp, detect = 80, sn = 150) {
   # Extract PC gene concentrations
   PCgenes <- raw[raw$Code.Class == "Positive", "Name", drop = TRUE]
   if (!all(grepl("[[:digit:]]", PCgenes))) {
-    stop("Positive controls need parenthesized concentrations: ex POS_A(128)")
+    stop("Positive controls need numeric concentrations: e.g. POS_A(128)")
   }
-  PCconc <- as.numeric(gsub(".*\\((.*)\\).*", "\\1", PCgenes))
+  PCconc <- as.numeric(regmatches(PCgenes, regexpr("\\d+\\.*\\d*", PCgenes)))
 
   # Code QC measures and flags
   exp %>%
@@ -48,13 +48,15 @@ NanoStringQC <- function(raw, exp, detect = 80, sn = 150) {
         purrr::map_dbl(sd),
       lod = .data$ncgMean + 2 * .data$ncgSD,
       llod = .data$ncgMean - 2 * .data$ncgSD,
-      spcFlag = raw[raw$Name == "POS_E(0.5)", -1:-3] %>%
+      spcFlag = raw[raw$Name %in% c("POS_E(0.5)", "POS_1"), -1:-3] %>%
         purrr::flatten() %>%
         magrittr::is_less_than(.data$llod) %>%
         magrittr::or(.data$ncgMean == 0),
-      gd = raw[raw$Code.Class == "Endogenous", -1:-3, drop = FALSE] %>%
-        magrittr::is_greater_than(.data$lod) %>%
-        colSums(),
+      gd = purrr::map2_int(
+        raw[raw$Code.Class == "Endogenous", -1:-3, drop = FALSE],
+        .data$lod,
+        ~ sum(.x > .y)
+      ),
       pergd = (.data$gd / sum(raw$Code.Class == "Endogenous")) * 100,
       averageHK = raw[raw$Code.Class == "Housekeeping", -1:-3, drop = FALSE] %>%
         purrr::map_dbl(~ exp(mean(log2(.)))),
