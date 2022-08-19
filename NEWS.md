@@ -1,3 +1,9 @@
+# nanostringr 0.4.0
+
+* new `normalize_pools()` function to use common pool samples to correct for batch effects
+when normalizing
+* new `normalize_random()` function to use randomly selected samples as the reference for `refMethod()`
+
 # nanostringr 0.3.0
 
 * fix calculation of genes detected so that the limit of detection is compared in parallel to each sample's counts instead of being recycled, #20
