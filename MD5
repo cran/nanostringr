@@ -1,10 +1,10 @@
-d7e555a6a10de5d95a0735c959ac09b2 *DESCRIPTION
+5764afdc0ea4eed417cdc114e33223fc *DESCRIPTION
 25de9fc2234a3572f07e1dfac277f813 *LICENSE
 fc2debef3ea6b08221e3fd014d545eb1 *NAMESPACE
-b02ff62c12cdff0a31d10beaecb8bab8 *NEWS.md
+3f5da42b395a40309953223b79726767 *NEWS.md
 14a2821495280e837eb991b388250c8b *R/CCplot.R
 7482433674a5abd79345c844ecdec9a2 *R/HKnorm.R
-48f498fa2a842b0ea00cfa62210f59b6 *R/NanoStringQC.R
+44800b061b176cc2a23da1b24ba8e2ef *R/NanoStringQC.R
 e75df740a9e54ff39526499147366e6e *R/check.R
 0508c0dd7ca3a4bd6d4f86c0f04372d8 *R/data.R
 50173e3a2ef78c289760ab61ec709d70 *R/nanostringr-package.R
@@ -13,8 +13,8 @@ c96cc0928237b41d23b0071f1fcff7dc *R/normalize_random.R
 a3301c4520480fe5b5ba0eb3f34f54d1 *R/read_rcc.R
 21d672ff368e0abcde7c6977578eb409 *R/refMethod.R
 109815cc2c7b741d65eb52b6da388e84 *R/utils.R
-ea124a494ad7922985532ad3b308e4d5 *build/partial.rdb
-a3d0ca94e1683fa5ba4ef06a5f3ce9e2 *build/vignette.rds
+20c8d3f97d93e2e318a22508275b5a02 *build/partial.rdb
+4ccd93b59be54b33b6eba691b6728bdf *build/vignette.rds
 50102aae9afadd2c661532f751dc2568 *data/expQC.rda
 608ca2bbd3d0dc1d3f0ba209f337e591 *data/hld.r.rda
 a7a3f166f9f02d6a336d26c9afe43faf *data/hlo.r.rda
@@ -24,7 +24,7 @@ ac61a8ee86c89c270730e6b3cf7e8dbf *data/ovc.r.rda
 23b37daeddf1b9a232bc93d4048659b3 *inst/CITATION
 d7c0bf0f976872c6d7c528ec13158560 *inst/doc/Overview.R
 792f76356f86a02dfce347315606dd9c *inst/doc/Overview.Rmd
-389a81f42b952097a1270df6e83ad7f9 *inst/doc/Overview.html
+012e663c7e0c4db1d9fc24d1addea302 *inst/doc/Overview.html
 b605b11cbae5946632ad1445de96c0e4 *inst/extdata/example.RCC
 cef1274dd4eed98880e709a4974a0ab8 *man/CCplot.Rd
 d8592a52588b9dcf1ac5b90c9abc69c7 *man/HKnorm.Rd
