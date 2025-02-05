@@ -135,7 +135,7 @@ R2 <- t(hld2[, paste("HL2", getNum(choice.refs), sep = "_")])
 Y <- t(hld2[, !colnames(hld2) %in% paste("HL2", getNum(choice.refs), sep = "_")])
 S2.r <- t(refMethod(Y, R1, R2)) # Data from CodeSet 2 now calibrated for CodeSet 1
 
-## ----plot_gene----------------------------------------------------------------
+## ----plot_gene, fig.cap='HL1 vs HL2 gene expression with and without ccorrection'----
 set.seed(2016)
 gene <- sample(1:nrow(hld1), 1)
 par(mfrow = c(1, 2))
